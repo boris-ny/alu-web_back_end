@@ -41,7 +41,7 @@ function countStudents(filePath) {
             studentList.push(
               `Number of students in ${course}: ${
                 courseDict[course].length
-              }. List: ${courseDict[course].join(', ')}`
+              }. List: ${courseDict[course].join(', ')}`,
             );
           }
         }
