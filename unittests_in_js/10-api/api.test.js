@@ -37,3 +37,34 @@ describe('GET /cart/:id', () => {
     }
     );
 });
+
+
+describe('POST /login', () => {
+    it('status 200', (done) => {
+        request.post("http://localhost:7865/login", { json: { userName: "John doe" } }, (error, response, body) => {
+            if (error) throw error;
+            expect(response.statusCode).to.equal(200);
+            expect(body).to.equal('Welcome John doe');
+            done();
+        });
+    });
+});
+
+
+describe('GET /available_payments', () => {
+    it('status 200', (done) => {
+        request('http://localhost:7865/available_payments', (error, response, body) => {
+            if (error) throw error;
+            expect(response.statusCode).to.equal(200);
+            const data = {
+                payment_methods: {
+                    credit_cards: true,
+                    paypal: false
+                }
+            
+            }
+            expect(JSON.parse(body)).to.deep.equal(data);
+            done();
+        });
+    });
+});
