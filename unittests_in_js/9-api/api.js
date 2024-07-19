@@ -6,8 +6,8 @@ app.get('/', (req, res) => {
   res.send('Welcome to the payment system');
 });
 
-app.get('/cart/:id', (req, res) => {
-  const id = parseInt(req.params.id, 10);
+app.get('/cart/:id([0-9]+)', (req, res) => {
+  const id = parseInt(req.params.id);
   if (isNaN(id)) {
     res.status(404);
     console.log('Id is not a number');
